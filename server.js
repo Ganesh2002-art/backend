@@ -13,19 +13,25 @@ app.use(cors({
   origin: [
     "https://tinylink-frontend-sable.vercel.app",
     "http://localhost:3000"
-  ]
+  ],
+  methods: ["GET", "POST", "DELETE"],
+  allowedHeaders: ["Content-Type"]
 }));
 
 
 
+
 const pool = mysql.createPool({
-  host: process.env.DATABASE_HOST || 'localhost',
-  user: process.env.DATABASE_USER || 'root',
-  password: process.env.DATABASE_PASSWORD || 'root',
-  database: process.env.DATABASE_NAME || 'url_shortener',
-  port: process.env.DATABASE_PORT || 3306,
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
+  port: process.env.DATABASE_PORT,
   waitForConnections: true,
   connectionLimit: 10,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 
