@@ -6,8 +6,16 @@ const mysql = require('mysql2/promise');
 const app = express();
 app.use(express.json());
 
-const cors = require('cors');
-app.use(cors({ origin: 'http://localhost:3000' }));
+
+const cors = require("cors");
+
+app.use(cors({
+  origin: [
+    "https://tinylink-frontend-sable.vercel.app",
+    "http://localhost:3000"
+  ]
+}));
+
 
 
 const pool = mysql.createPool({
