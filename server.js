@@ -12,7 +12,7 @@ const cors = require("cors");
 app.use(cors({
   origin: [
     "https://tinylink-frontend-sable.vercel.app",
-    "http://localhost:3000"
+    
   ],
   methods: ["GET", "POST", "DELETE"],
   allowedHeaders: ["Content-Type"]
